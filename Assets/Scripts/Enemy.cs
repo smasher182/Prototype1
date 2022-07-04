@@ -23,9 +23,15 @@ public class Enemy : MonoBehaviour
     
     void Update()
     {
-        // moves enemy towards the direction of player.
-        // multiplies speed to the difference between player and enemy position, hence the parenthesis.
-        // normalizes enemy speed irrespective of distance between player and enemy.
-        enemyRb.AddForce((player.transform.position - transform.position).normalized * speed);
+        Vector3 LookDirection = (player.transform.position - transform.position).normalized;
+
+       // moves enemy towards the direction of player.
+       // multiplies speed to the difference between player and enemy position, hence the parenthesis.
+       // normalizes enemy speed irrespective of distance between player and enemy.
+       // enemyRb.AddForce((player.transform.position - transform.position).normalized * speed);
+
+        enemyRb.AddForce(LookDirection * speed);
+
+
     }
 }
