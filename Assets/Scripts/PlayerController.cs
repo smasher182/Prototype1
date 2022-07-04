@@ -45,7 +45,16 @@ public class PlayerController : MonoBehaviour
             hasPowerUp = true;
             // destroys the other gameobject that collides with this one.
             Destroy(other.gameObject);
+            // starts the coroutine.
+            StartCoroutine(PowerUpCountdownRoutine());
         }
+    }
+
+    IEnumerator PowerUpCountdownRoutine()
+    {
+        // waits for 7secs and disables the powerUp.
+        yield return new WaitForSeconds(7);
+        hasPowerUp = false;
     }
 
     private void OnCollisionEnter(Collision collision)
