@@ -32,6 +32,11 @@ public class Enemy : MonoBehaviour
 
         enemyRb.AddForce(LookDirection * speed);
 
-
+        // checks if enemy falls off the arena.
+        if(transform.position.y < -10)
+        {
+            // destroys the enemy gameobject.
+            Destroy(gameObject);
+        }
     }
 }

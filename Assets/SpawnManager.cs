@@ -8,6 +8,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemyPrefab;
     // reference to spawn range.
     public float spawnRange = 9;
+    public int enemyCount;
     void Start()
     {
         // gets random spawn position between -9 and 9 in X-axis.
@@ -31,6 +32,17 @@ public class SpawnManager : MonoBehaviour
         SpawnEnemyWave(3);
     }
 
+    private void Update()
+    {
+        // finds the number of enemies in the scene.
+        enemyCount = FindObjectsOfType<Enemy>().Length;
+        //
+        if (enemyCount == 0)
+        {
+            // spawns one more enemy if enemy count goes to zero.
+            SpawnEnemyWave(1);
+        }
+    }
     void SpawnEnemyWave(int enemiesToSpawn)
     {
         /* for (int i = 0; i < 3; i++)
