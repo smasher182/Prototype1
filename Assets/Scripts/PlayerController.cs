@@ -45,4 +45,13 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // checks if player collides with enemy and hasPowerUp turned on
+        if(collision.gameObject.CompareTag("Enemy") && hasPowerUp)
+        {
+            Debug.Log("Collided with: " + collision.gameObject.name + "with power set to" + hasPowerUp);
+        }
+    }
 }
