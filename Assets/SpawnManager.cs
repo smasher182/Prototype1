@@ -12,6 +12,8 @@ public class SpawnManager : MonoBehaviour
     public int enemyCount;
     // reference to number of enemy waves.
     public int waveNumber = 1;
+    // reference to powerPrefab gameObject.
+    public GameObject powerUpPrefab;
     void Start()
     {
         // gets random spawn position between -9 and 9 in X-axis.
@@ -35,6 +37,9 @@ public class SpawnManager : MonoBehaviour
         // changed after using the wave number variable.
         //SpawnEnemyWave(3);
         SpawnEnemyWave(waveNumber);
+
+        // spawns powerUpPrefabs at the start.
+        Instantiate(powerUpPrefab, GenerateSpawnPoint(), powerUpPrefab.transform.rotation);
     }
 
     private void Update()
@@ -50,6 +55,9 @@ public class SpawnManager : MonoBehaviour
             // changed after using the wave number variable.
             //SpawnEnemyWave(1);
             SpawnEnemyWave(waveNumber);
+
+            // spawns powerUpPrefabs at the given position.
+            Instantiate(powerUpPrefab, GenerateSpawnPoint(), powerUpPrefab.transform.rotation);
         }
     }
     void SpawnEnemyWave(int enemiesToSpawn)
