@@ -12,9 +12,11 @@ public class PlayerController : MonoBehaviour
     private GameObject focalPoint;
     // reference to force of interaction.
     private float powerUpStrength = 15.0f;
-
     // reference boolean to check powerUp.
     public bool hasPowerUp = false;
+
+    // reference to powerUpIndicator gamobject.
+    public GameObject powerUpIndicator;
 
     void Start()
     {
@@ -34,6 +36,11 @@ public class PlayerController : MonoBehaviour
 
         // moves the player in the direction of focal point with AddForce method based on forwardInput. 
         playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
+
+        // sets the powerUpIndicator position to the player's position.
+        //powerUpIndicator.transform.position = transform.position;
+        // offsets the indicator by the value of a new vector on Z-axis.
+        powerUpIndicator.transform.position = transform.position + new Vector3(0, 1, 0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,6 +50,8 @@ public class PlayerController : MonoBehaviour
         {
             // changes the bool to true when player runs into the powerUp.
             hasPowerUp = true;
+            // activates the powerUpIndicator when powerUp is picked up.
+            powerUpIndicator.gameObject.SetActive(true);
             // destroys the other gameobject that collides with this one.
             Destroy(other.gameObject);
             // starts the coroutine.
@@ -55,6 +64,8 @@ public class PlayerController : MonoBehaviour
         // waits for 7secs and disables the powerUp.
         yield return new WaitForSeconds(7);
         hasPowerUp = false;
+        // deactivates powerUpIndicator after a set time.
+        powerUpIndicator.gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
