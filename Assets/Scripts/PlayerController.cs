@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     // reference to focalPoint.
     private GameObject focalPoint;
 
+    // reference boolean to check powerUp.
+    public bool hasPowerUp = false;
+
     void Start()
     {
         // initializes rigidbody component at start.
@@ -29,5 +32,17 @@ public class PlayerController : MonoBehaviour
 
         // moves the player in the direction of focal point with AddForce method based on forwardInput. 
         playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // checks if this gameobject collides with other gameobject with a compareTag.
+        if (other.CompareTag("PowerUp"))
+        {
+            // changes the bool to true when player runs into the powerUp.
+            hasPowerUp = true;
+            // destroys the other gameobject that collides with this one.
+            Destroy(other.gameObject);
+        }
     }
 }
