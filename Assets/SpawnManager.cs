@@ -28,15 +28,23 @@ public class SpawnManager : MonoBehaviour
         // removed after creating for loop for enemy spawn.
         //Instantiate(enemyPrefab, GenerateSpawnPoint(), enemyPrefab.transform.rotation);
 
-        SpawnEnemyWave();
+        SpawnEnemyWave(3);
     }
 
-    void SpawnEnemyWave()
+    void SpawnEnemyWave(int enemiesToSpawn)
     {
-        for (int i = 0; i < 3; i++)
+        /* for (int i = 0; i < 3; i++)
+         {
+             Instantiate(enemyPrefab, GenerateSpawnPoint(), enemyPrefab.transform.rotation);
+         }
+        */
+
+        // passed a parameter in spawnEnemyWave function.
+        for (int i = 0; i < enemiesToSpawn; i++)
         {
             Instantiate(enemyPrefab, GenerateSpawnPoint(), enemyPrefab.transform.rotation);
         }
+
     }
     private Vector3 GenerateSpawnPoint()
     {
