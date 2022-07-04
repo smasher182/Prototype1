@@ -23,8 +23,18 @@ public class SpawnManager : MonoBehaviour
         //Instantiate(enemyPrefab, new Vector3(0, 0, 6), enemyPrefab.transform.rotation);
 
         //Instantiate(enemyPrefab, new Vector3(spawnPosX, 0, spawnPosZ), enemyPrefab.transform.rotation);
+        // replaced randomPos after creating GenerateSpawnPoint() method.
+        // Instantiate(enemyPrefab, randomPos, enemyPrefab.transform.rotation);
+        Instantiate(enemyPrefab, GenerateSpawnPoint(), enemyPrefab.transform.rotation);
+    }
 
-        Instantiate(enemyPrefab, randomPos, enemyPrefab.transform.rotation);
+    private Vector3 GenerateSpawnPoint()
+    {
+        float spawnPosX = Random.Range(-spawnRange, spawnRange);
+        float spawnPosZ = Random.Range(-spawnRange, spawnRange);
+        Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
+        // returns the randomPos data from the method.
+        return randomPos;
     }
 
 }
