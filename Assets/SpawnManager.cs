@@ -8,7 +8,10 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemyPrefab;
     // reference to spawn range.
     public float spawnRange = 9;
+    // reference to number of enemies.
     public int enemyCount;
+    // reference to number of enemy waves.
+    public int waveNumber = 1;
     void Start()
     {
         // gets random spawn position between -9 and 9 in X-axis.
@@ -29,7 +32,9 @@ public class SpawnManager : MonoBehaviour
         // removed after creating for loop for enemy spawn.
         //Instantiate(enemyPrefab, GenerateSpawnPoint(), enemyPrefab.transform.rotation);
 
-        SpawnEnemyWave(3);
+        // changed after using the wave number variable.
+        //SpawnEnemyWave(3);
+        SpawnEnemyWave(waveNumber);
     }
 
     private void Update()
@@ -39,8 +44,12 @@ public class SpawnManager : MonoBehaviour
         //
         if (enemyCount == 0)
         {
+            // increases wave number after each enemy waves defeated.
+            waveNumber++;
             // spawns one more enemy if enemy count goes to zero.
-            SpawnEnemyWave(1);
+            // changed after using the wave number variable.
+            //SpawnEnemyWave(1);
+            SpawnEnemyWave(waveNumber);
         }
     }
     void SpawnEnemyWave(int enemiesToSpawn)
