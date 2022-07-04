@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     // reference to focalPoint.
     private GameObject focalPoint;
+    // reference to force of interaction.
+    private float powerUpStrength = 15.0f;
 
     // reference boolean to check powerUp.
     public bool hasPowerUp = false;
@@ -51,7 +53,16 @@ public class PlayerController : MonoBehaviour
         // checks if player collides with enemy and hasPowerUp turned on
         if(collision.gameObject.CompareTag("Enemy") && hasPowerUp)
         {
+            // creates a variable to hold the rigidbody component of enemy gameobject.
+            Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+
+            // creates a variable to get the direction away from player.
+            Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
             Debug.Log("Collided with: " + collision.gameObject.name + "with power set to" + hasPowerUp);
+
+            // adds immediate force to the rigidbody in the direction away from the player.
+            //enemyRigidbody.AddForce(awayFromPlayer * 10, ForceMode.Impulse);
+            enemyRigidbody.AddForce(awayFromPlayer * powerUpStrength, ForceMode.Impulse);
         }
     }
 }
