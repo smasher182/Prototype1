@@ -101,6 +101,12 @@ public class PlayerController : MonoBehaviour
             // checks if player is grounded when it hits the ground.
             isGrounded = true;
         }
+
+        if (collision.gameObject.CompareTag("Barrier"))
+        {
+            Destroy(collision.gameObject, 1);
+        }
+        
     }
 
 }

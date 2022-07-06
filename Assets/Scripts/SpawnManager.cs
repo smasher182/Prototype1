@@ -14,6 +14,10 @@ public class SpawnManager : MonoBehaviour
     public int waveNumber = 1;
     // reference to powerPrefab gameObject.
     public GameObject powerUpPrefab;
+    // reference to barrier spawn array.
+    public GameObject[] barrierSpawn;
+
+    public GameObject barrier;
     void Start()
     {
         // gets random spawn position between -9 and 9 in X-axis.
@@ -40,6 +44,8 @@ public class SpawnManager : MonoBehaviour
 
         // spawns powerUpPrefabs at the start.
         Instantiate(powerUpPrefab, GenerateSpawnPoint(), powerUpPrefab.transform.rotation);
+
+        
     }
 
     private void Update()
@@ -58,6 +64,13 @@ public class SpawnManager : MonoBehaviour
 
             // spawns powerUpPrefabs at the given position.
             Instantiate(powerUpPrefab, GenerateSpawnPoint(), powerUpPrefab.transform.rotation);
+
+           
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            SpawnBarrier();
         }
     }
     void SpawnEnemyWave(int enemiesToSpawn)
@@ -84,4 +97,13 @@ public class SpawnManager : MonoBehaviour
         return randomPos;
     }
 
+    void SpawnBarrier()
+    {
+        for (int i = 0; i < barrierSpawn.Length; i++)
+        {
+            int rndSpawn = Random.Range(0, barrierSpawn.Length);
+            Instantiate(barrier, barrierSpawn[rndSpawn].transform.position, barrierSpawn[rndSpawn].transform.rotation);
+        }
+
+    }
 }
