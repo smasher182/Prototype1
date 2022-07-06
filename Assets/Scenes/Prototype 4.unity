@@ -281,7 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4165187268090244, guid: 11a653b9169986c4f9436a3002fb4516, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4165187268090244, guid: 11a653b9169986c4f9436a3002fb4516, type: 3}
       propertyPath: m_LocalScale.x
@@ -581,6 +581,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island
       objectReference: {fileID: 0}
+    - target: {fileID: 1301643505922104, guid: 961be46ca9a355943ae3f65c47741bb0, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4625923886776944, guid: 961be46ca9a355943ae3f65c47741bb0, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -707,7 +711,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1450997829
 MeshRenderer:
@@ -821,6 +825,10 @@ MonoBehaviour:
   enemyPrefab: {fileID: 3571641275271086671, guid: 2995b181d2267874da7b54f1a84355df,
     type: 3}
   spawnRange: 9
+  enemyCount: 0
+  waveNumber: 1
+  powerUpPrefab: {fileID: 5664399422841745567, guid: 0c1db6ee53e3672419e72fa1f457aba5,
+    type: 3}
 --- !u!4 &1460235588
 Transform:
   m_ObjectHideFlags: 0
@@ -842,75 +850,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 892920558}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &7179927583385615581
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5661881175573992913, guid: 0c1db6ee53e3672419e72fa1f457aba5,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5661881175573992913, guid: 0c1db6ee53e3672419e72fa1f457aba5,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5661881175573992913, guid: 0c1db6ee53e3672419e72fa1f457aba5,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5661881175573992913, guid: 0c1db6ee53e3672419e72fa1f457aba5,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 5661881175573992913, guid: 0c1db6ee53e3672419e72fa1f457aba5,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5661881175573992913, guid: 0c1db6ee53e3672419e72fa1f457aba5,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5661881175573992913, guid: 0c1db6ee53e3672419e72fa1f457aba5,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5661881175573992913, guid: 0c1db6ee53e3672419e72fa1f457aba5,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5661881175573992913, guid: 0c1db6ee53e3672419e72fa1f457aba5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5661881175573992913, guid: 0c1db6ee53e3672419e72fa1f457aba5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5661881175573992913, guid: 0c1db6ee53e3672419e72fa1f457aba5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5664399422841745567, guid: 0c1db6ee53e3672419e72fa1f457aba5,
-        type: 3}
-      propertyPath: m_Name
-      value: PowerUp
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0c1db6ee53e3672419e72fa1f457aba5, type: 3}
 --- !u!1001 &7305732181041295649
 PrefabInstance:
   m_ObjectHideFlags: 0

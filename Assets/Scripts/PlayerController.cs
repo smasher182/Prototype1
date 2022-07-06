@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
     // reference to powerUpIndicator gamobject.
     public GameObject powerUpIndicator;
+    // bool check if the player is grounded or not.
+    bool isGrounded = true;
+
 
     void Start()
     {
@@ -41,6 +44,14 @@ public class PlayerController : MonoBehaviour
         //powerUpIndicator.transform.position = transform.position;
         // offsets the indicator by the value of a new vector on Z-axis.
         powerUpIndicator.transform.position = transform.position + new Vector3(0, 1, 0);
+
+        if(Input.GetButtonDown("Jump") && isGrounded)
+        {
+            //moves the player in upward direction with AddForce method.
+            playerRb.AddForce(new Vector3(0, 8, 0), ForceMode.Impulse);
+            // checks if the player is in the air.
+            isGrounded = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -84,5 +95,12 @@ public class PlayerController : MonoBehaviour
             //enemyRigidbody.AddForce(awayFromPlayer * 10, ForceMode.Impulse);
             enemyRigidbody.AddForce(awayFromPlayer * powerUpStrength, ForceMode.Impulse);
         }
+
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            // checks if player is grounded when it hits the ground.
+            isGrounded = true;
+        }
     }
+
 }
